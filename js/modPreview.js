@@ -17,12 +17,12 @@ function updatePreview(ignoreSubtraction) {
   materialSelects.each((index, element) => {
     if (!element.disabled && element.value !== 'null') {
       const sentibarValues = MATERIAL[parseInt(element.value)];
+      materialValues.push(sentibarValues);
 
       materialSum.p += sentibarValues.p;
       materialSum.m += sentibarValues.m;
       materialSum.c += sentibarValues.c;
       materialSum.a += sentibarValues.a;
-      materialValues.push(sentibarValues);
     }
   });
 
@@ -35,22 +35,20 @@ function updatePreview(ignoreSubtraction) {
 
   // compute the subtraction of recency effect
   if (materialValues.length > 1) {
-    materialValues.forEach((sentibar, index, array) => {
-      if (index < array.length - 1) {
-        recencySum.p -= sentibar.p;
-        recencySum.m -= sentibar.m;
-        recencySum.c -= sentibar.c;
-        recencySum.a -= sentibar.a;
-      } else {
-        recencySum.p += sentibar.p;
-        recencySum.m += sentibar.m;
-        recencySum.c += sentibar.c;
-        recencySum.a += sentibar.a;
-      }
-    });
-  }
+    for (let i = materialValues.length - 2; i >= 0; i--) {
+      const nextMaterial = materialValues[i + 1];
+      const currentMaterial = materialValues[i];
 
-  console.table(recencySum);
+      for (const emotion in recencySum) {
+        if (recencySum.hasOwnProperty(emotion)) {
+          const emotionSub = nextMaterial[emotion] - currentMaterial[emotion];
+          recencySum[emotion] += emotionSub < 0 ? emotionSub : 0;
+        }
+      }
+    }
+
+    console.table(recencySum);
+  }
 
   // subtract the recency values to the material sum
   materialSum.p += recencySum.p;

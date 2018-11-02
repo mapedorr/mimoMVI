@@ -39,6 +39,8 @@ let votingIntentions = {
 let dayFacts = null;
 let currentFact = null;
 let currentFactIndex = 0;
+let debugShowNumbers = false;
+let debugShowSum = false;
 
 /**
  * U I   E L E M E N T S ──────────────────────────────────────────────────────
@@ -56,9 +58,13 @@ let materialSentibars = null;
 let modSendSentibar = null;
 let recButton = null;
 let modSumSentibar = null;
+let conDebugSum = null;
 // module: results
 let endDayButton = null;
 let votingGroups = null;
+// debug
+let showNumbersCheck = null;
+let showSumCheck = null;
 
 /**
  * F U N C T I O N S ──────────────────────────────────────────────────────────
@@ -86,6 +92,7 @@ function turnOnMimo() {
   modSendSentibar = $('#mod-preview-sentibar');
   recButton = $('#rec');
   modSumSentibar = $('#mod-sum-sentibar');
+  conDebugSum = $('#con-debug-sum');
 
   // module: results
   endDayButton = $('#end-day');
@@ -95,8 +102,18 @@ function turnOnMimo() {
     n: $('#groupN')
   };
 
+  // debug
+  showNumbersCheck = $('#debug-show-numbers');
+  showSumCheck = $('#debug-show-sum');
+
+  showNumbersCheck.val([(debugShowNumbers) ? 'showNumbers' : '']);
+  showSumCheck.val([(debugShowSum) ? 'showSum' : '']);
+  updateDebug();
+
   // set event listeners
   nextFactButton.on('click', showCurrentNew);
+  showNumbersCheck.on('click', toggleShowNumbers);
+  showSumCheck.on('click', toggleShowSum);
 
   startGame();
 }
@@ -135,4 +152,23 @@ function setButtonDisabled(button, enable) {
   else {
     button.attr('disabled', 'disabled');
   }
+}
+
+function toggleShowNumbers() {
+  debugShowNumbers = !debugShowNumbers;
+  updateDebug();
+}
+
+function toggleShowSum() {
+  debugShowSum = !debugShowSum;
+  updateDebug();
+}
+
+function updateDebug() {
+  const allSentibarsNumbers = $('.sentibar .value');
+  (debugShowNumbers === true) ?
+    allSentibarsNumbers.show() :
+    allSentibarsNumbers.hide();
+
+  (debugShowSum === true) ? conDebugSum.show() : conDebugSum.hide();
 }
