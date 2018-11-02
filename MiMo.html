@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>MiMo - v0.1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/sentibar.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/mod-facts.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/mod-mtl.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/mod-preview.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/mod-rslt.css" />
+</head>
+<body onload="turnOnMimo()">
+  <h1 id="machine-name">
+    <span class="yellow">M.</span>
+    <span class="green">i.</span>
+    <span class="purple">M.</span>
+    <span class="fuschia">o.</span>
+  </h1>
+  <div id="mimo">
+    <!-- MODULE FACTS -->
+    <div class="mod-facts">
+      <h1><b id="day-count">?</b> días restantes</h1>
+      <div class="con-progress">
+        <h3 id="facts-count"></h3>
+        <button id="next-fact">Imprimir Noticia</button>
+      </div>
+      <div id="fact-desc" class="current-fact bg-white black">
+        <div id="who"><b>¿Quien?.</b><span></span></div>
+        <div id="what"><b>¿Qué?.</b><span></span></div>
+      </div>
+    </div>
+
+    <!-- MODULE MATERIAL -->
+    <div class="mod-mtl mod-margin-top">
+      <div class="con-material">
+        <div id="mtl-01" class="row-material">
+          <h2>1.</h1>
+          <div class="mtl-select">
+            <select name="material01" id="material01">
+              <option value="null">Vacío</option>
+            </select>
+          </div>
+          <div class="sentibar">
+            <div class="persuade cell">
+              <div class="fill"></div>
+              <div class="value">1</div>
+            </div>
+            <div class="motivate cell">
+              <div class="fill"></div>
+              <div class="value">1</div>
+            </div>
+            <div class="cajole cell">
+              <div class="fill"></div>
+              <div class="value">1</div>
+            </div>
+            <div class="anger cell">
+              <div class="fill"></div>
+              <div class="value">1</div>
+            </div>
+          </div>
+        </div>
+        <div id="mtl-02" class="row-material">
+          <h2>2.</h1>
+          <div class="mtl-select">
+            <select name="material02" id="material02">
+              <option value="null">Vacío</option>
+            </select>
+          </div>
+          <div class="sentibar">
+              <div class="persuade cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+              <div class="motivate cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+              <div class="cajole cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+              <div class="anger cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+            </div>
+        </div>
+        <div id="mtl-03" class="row-material">
+          <h2>3.</h1>
+          <div class="mtl-select">
+            <select name="material03" id="material03">
+              <option value="null">Vacío</option>
+            </select>
+          </div>
+          <div class="sentibar">
+              <div class="persuade cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+              <div class="motivate cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+              <div class="cajole cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+              <div class="anger cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+            </div>
+        </div>
+        <div id="mtl-04" class="row-material">
+          <h2>4.</h1>
+          <div class="mtl-select">
+            <select name="material04" id="material04">
+              <option value="null">Vacío</option>
+            </select>
+          </div>
+          <div class="sentibar">
+              <div class="persuade cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+              <div class="motivate cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+              <div class="cajole cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+              <div class="anger cell">
+                <div class="fill"></div>
+                <div class="value">1</div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE SEND -->
+    <div class="mod-preview mod-margin-top">
+      <div id="mod-preview-sentibar" class="sentibar">
+        <div class="persuade cell">
+          <div class="fill"></div>
+          <div class="value">2</div>
+        </div>
+        <div class="motivate cell">
+          <div class="fill"></div>
+          <div class="value">2</div>
+        </div>
+        <div class="cajole cell">
+          <div class="fill"></div>
+          <div class="value">2</div>
+        </div>
+        <div class="anger cell">
+          <div class="fill"></div>
+          <div class="value">2</div>
+        </div>
+      </div>
+      <button id="rec">REC</button>
+      <h4 id="sum-title" class="white">- - - - - - sum - - - - - -</h4>
+      <div id="mod-sum-sentibar" class="sentibar">
+        <div class="persuade cell">
+          <div class="fill"></div>
+          <div class="value">2</div>
+        </div>
+        <div class="motivate cell">
+          <div class="fill"></div>
+          <div class="value">2</div>
+        </div>
+        <div class="cajole cell">
+          <div class="fill"></div>
+          <div class="value">2</div>
+        </div>
+        <div class="anger cell">
+          <div class="fill"></div>
+          <div class="value">2</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE RESULTS -->
+    <div class="mod-rslt mod-margin-top">
+      <div class="con-groups">
+        <div class="group" id="groupA">
+          <h2></h2>
+          <h3></h3>
+        </div>
+        <div class="group" id="groupB">
+            <h2></h2>
+            <h3></h3>
+        </div>
+        <div class="group" id="groupN">
+            <h2>Nosae.</h2>
+            <h3></h3>
+        </div>
+      </div>
+      <button id="end-day">¡End day!</button>
+    </div>
+  </div>
+  <!-- scripts loading -->
+  <script src="js/main.js"></script>
+  <script src="js/sentibar.js"></script>
+  <script src="js/modFacts.js"></script>
+  <script src="js/modMaterial.js"></script>
+  <script src="js/modPreview.js"></script>
+  <script src="js/jquery.js"></script>
+</body>
+</html>

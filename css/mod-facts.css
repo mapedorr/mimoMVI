@@ -1,0 +1,32 @@
+.mod-facts h1 {
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.mod-facts .con-progress {
+  flex: 0 auto !important;
+  text-align: center;
+}
+
+.mod-facts .con-progress h3,
+.mod-facts .con-progress button {
+  display: inline-block;
+}
+
+.mod-facts .con-progress button {
+  width: 80%;
+}
+
+.current-fact {
+  margin-top: 10px;
+  padding: 10px;
+  max-height: 280px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.current-fact span {
+  background-color: #efe158;
+  padding: 0px 10px;
+}

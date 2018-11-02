@@ -1,0 +1,185 @@
+html {
+  font-size: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #00303e;
+}
+
+body, button, input, select, textarea, pre {
+  font-family: 'Conso', Courier New, monospace;
+  color: #f8f8f2;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+button {
+  border: none;
+  background: #ec007c;
+  color: #efe158;
+  padding: 10px 5px;
+}
+
+button:active {
+  background-color: #efe158;
+  color: #ec007c;
+}
+
+button:disabled {
+  background-color: #999999;
+  color: #f8f8f2;
+}
+
+select:disabled {
+  background-color: #f8f8f2;
+  color: #999999;
+}
+
+.selected {
+  color: #00303e;
+  background: #0096c1;
+}
+
+.black {
+  color: #00303e;
+}
+
+.bg-black {
+  background-color: #00303e;
+}
+
+.white {
+  color: #f8f8f2;
+}
+
+.bg-white {
+  background-color: #f8f8f2;
+}
+
+.grey {
+  color: #999999;
+}
+
+.bg-grey {
+  background-color: #999999;
+}
+
+.blue {
+  color: #66d9ef;
+}
+
+.bg-blue {
+  background-color: #66d9ef;
+}
+
+.green {
+  color: #a6e22e;
+}
+
+.bg-green {
+  background-color: #a6e22e;
+}
+
+.orange {
+  color: #fd971f;
+}
+
+.bg-orange {
+  background-color: #fd971f;
+}
+
+.fuschia {
+  color: #ec007c;
+}
+
+.bg-fuschia {
+  background-color: #ec007c;
+}
+
+.yellow {
+  color: #efe158;
+}
+
+.bg-yellow {
+  background-color: #efe158;
+}
+
+.purple {
+  color: #ae81ff;
+}
+
+.bg-purple {
+  background-color: #ae81ff;
+}
+
+@font-face {
+  font-family: 'Conso';
+  src: url("Conso.woff") format("woff"), url("Conso.ttf") format("truetype");
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: 'Conso';
+  src: url("Conso-Italic.woff") format("woff"), url("Conso-Italic.ttf") format("truetype");
+  font-style: italic;
+  font-stretch: normal;
+}
+article, details, footer, header, nav, section {
+  display: block;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul, nav ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#machine-name {
+  text-align: center;
+  font-size: 64px;
+  line-height: 64px;
+  margin: 10px auto;
+  border: 2px dashed #f8f8f2;
+  padding: 10px 0px;
+}
+
+#machine-name,
+#mimo {
+  width: 1280px;
+}
+
+#mimo {
+  height: 720px;
+  background: #00303e;
+  margin: 0 auto;
+  display: flex;
+  padding: 15px;
+}
+
+#mimo div {
+  flex: 1 auto;
+}
+
+.mod-facts,
+.mod-mtl,
+.mod-preview,
+.mod-rslt {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border: 1px dashed #66d9ef;
+  margin: 2px;
+  width: 300px;
+}
+
+.mod-margin-top {
+  margin-top: 96px;
+}

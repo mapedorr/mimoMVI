@@ -1,0 +1,27 @@
+.mod-mtl * {
+  color: black;
+}
+
+.con-material {
+  display: flex;
+  flex-direction: column;
+  max-height: 280px;
+}
+
+.row-material {
+  display: flex;
+  align-items: center;
+}
+
+.row-material h2 {
+  color: #f8f8f2;
+}
+
+.mtl-select {
+  display: grid;
+  width: 100%;
+}
+
+.mtl-select select {
+  width: 95%;
+}

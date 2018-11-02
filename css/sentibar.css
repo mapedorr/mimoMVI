@@ -1,0 +1,42 @@
+.sentibar {
+  display: flex;
+}
+
+.sentibar .cell {
+  width: 32px;
+  height: 32px;
+  align-self: flex-end;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  position: relative;
+  background-color: #f8f8f2;
+}
+
+.sentibar .cell .value {
+  position: relative;
+}
+
+.sentibar .cell .fill {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+  opacity: 0.5;
+}
+
+.sentibar .persuade .fill {
+  background-color: yellow;
+}
+
+.sentibar .motivate .fill {
+  background-color: green;
+}
+
+.sentibar .cajole .fill {
+  background-color: purple;
+}
+
+.sentibar .anger .fill {
+  background-color: red;
+}

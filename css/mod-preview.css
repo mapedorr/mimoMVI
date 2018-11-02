@@ -1,0 +1,41 @@
+.mod-preview * {
+  color: black;
+}
+
+.mod-preview .sentibar {
+  flex: unset !important;
+  height: 160px;
+}
+
+.mod-preview button {
+  align-self: center;
+  background-color:red;
+  color: #f8f8f2;
+  width: 30%;
+  margin-top: 15px;
+}
+
+.mod-preview button:active {
+  color: #efe158;
+}
+
+.mod-preview button:disabled {
+  background-color: #999999;
+  color: #f8f8f2;
+}
+
+.mod-preview .sentibar .cell {
+  border: 1px solid #313131;
+}
+
+.mod-preview #sum-title {
+  color: #f8f8f2;
+  text-align: center;
+  margin: 0;
+  opacity: 0.5;
+}
+
+.mod-preview #mod-sum-sentibar {
+  height: auto;
+  opacity: 0.5;
+}
