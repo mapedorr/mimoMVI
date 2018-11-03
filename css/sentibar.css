@@ -15,6 +15,7 @@
 
 .sentibar .cell .value {
   position: relative;
+  color: #00303e;
 }
 
 .sentibar .cell .fill {

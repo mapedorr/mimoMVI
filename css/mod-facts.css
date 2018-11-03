@@ -18,7 +18,7 @@
   width: 80%;
 }
 
-.current-fact {
+.mod-facts .current-fact {
   margin-top: 10px;
   padding: 10px;
   max-height: 280px;
@@ -26,7 +26,28 @@
   font-size: 16px;
 }
 
-.current-fact span {
+.mod-facts .current-fact span {
   background-color: #efe158;
   padding: 0px 10px;
+}
+
+.mod-facts .current-fact #goal span {
+  background-color: #66d9ef;
+}
+
+.mod-facts #con-material-dispenser .material-slot {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#con-material-dispenser .header {
+  text-align: center;
+  color: #efe158;
+  margin: 10px 0;
+}
+
+#con-material-dispenser .material-desc {
+  margin: 0 10px 0 0;
+  width: 50%;
 }
