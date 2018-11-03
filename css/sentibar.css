@@ -13,6 +13,27 @@
   background-color: #f8f8f2;
 }
 
+.sentibar .cell span {
+  position: absolute;
+  top: -32px;
+  transform: translateX(-50%);
+  color: #f8f8f2;
+  font-weight: normal;
+}
+
+.sentibar .persuade span {
+  color: #efe158;
+}
+.sentibar .motivate span {
+  color: #a6e22e;
+}
+.sentibar .cajole span {
+  color: #ae81ff;
+}
+.sentibar .anger span {
+  color: #ec007c;
+}
+
 .sentibar .cell .value {
   position: relative;
   color: #00303e;

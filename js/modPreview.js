@@ -30,7 +30,7 @@ function updatePreview(ignoreSubtraction) {
   setSentibarValues({
     sentibar: modSumSentibar,
     material: materialSum,
-    amplitudeLevel: PRV_AMPLITUDE_LEVEL
+    amplitudeLevel: MTL_AMPLITUDE_LEVEL * currentFact.maxMaterial
   });
 
   // compute the subtraction of recency effect
@@ -59,7 +59,7 @@ function updatePreview(ignoreSubtraction) {
   setSentibarValues({
     sentibar: modSendSentibar,
     material: materialSum,
-    amplitudeLevel: PRV_AMPLITUDE_LEVEL
+    amplitudeLevel: PRV_AMPLITUDE_LEVEL * currentFact.maxMaterial
   });
 
   setButtonDisabled(recButton, materialValues.length > 0);

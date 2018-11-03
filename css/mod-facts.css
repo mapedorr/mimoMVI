@@ -27,12 +27,24 @@
 }
 
 .mod-facts .current-fact span {
-  background-color: #efe158;
+  background-color: #bff4ff;
   padding: 0px 10px;
 }
 
-.mod-facts .current-fact #goal span {
-  background-color: #66d9ef;
+.mod-facts .current-fact #goal span.pColor {
+  background-color: #efe158;
+}
+
+.mod-facts .current-fact #goal span.mColor {
+  background-color: #a6e22e;
+}
+
+.mod-facts .current-fact #goal span.cColor {
+  background-color: #ae81ff;
+}
+
+.mod-facts .current-fact #goal span.aColor {
+  background-color: #ec007c;
 }
 
 .mod-facts #con-material-dispenser .material-slot {

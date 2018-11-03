@@ -40,20 +40,23 @@ const FACTS = [
       where: 'En debate',
       what: 'Hablando de propuestas para Economía',
       goal: GOAL_TYPE.c,
-      material: [0, 1, 2, 3]
+      material: [0, 1, 2, 3],
+      maxMaterial: 2
     },
     {
       who: candidateB,
       where: 'En debate',
       what: 'Hablando de propuestas para Economía',
       goal: GOAL_TYPE.a,
-      material: [0, 1, 2, 3]
+      material: [0, 1, 2, 3],
+      maxMaterial: 2
     },
     {
       who: 'Ecolín',
       where: 'En partido contra Brumas',
       what: 'Gana 2 a 0',
-      material: [4, 5]
+      material: [4, 5],
+      maxMaterial: 1
     }
   ]
   // d2
@@ -87,6 +90,7 @@ let factsCount = null;
 let factDesc = null;
 let nextFactButton = null;
 let conMaterialDispenser = null;
+let factSlots = [];
 // - - - module: material
 let modMaterial = null;
 let materialSelects = null;

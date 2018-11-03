@@ -21,8 +21,12 @@ function setDay() {
  * based on that.
  */
 function showCurrentNew() {
+  // disable the button until the player record the news
+  setButtonDisabled(nextFactButton);
+
   // remove all the material from the previous fact
   conMaterialDispenser.find('.material-slot').remove();
+  factSlots = [];
 
   // pick the current fact and fill its material
   currentFact = dayFacts[currentFactIndex++];
@@ -35,9 +39,11 @@ function showCurrentNew() {
   factDesc.where.show();
   factDesc.what.find('span').text(currentFact.what);
   factDesc.what.show();
-  factDesc.goal.find('span').text((currentFact.goal) ?
-    INTENTIONS[currentFact.goal]
-    : 'Informar');
+
+  const goalSpan = factDesc.goal.find('span');
+  goalSpan.text((currentFact.goal) ? INTENTIONS[currentFact.goal] : 'Informar');
+  goalSpan.removeClass();
+  goalSpan.addClass(currentFact.goal + 'Color');
   factDesc.goal.show();
 
   // show the material available for the fact
@@ -67,11 +73,14 @@ function showCurrentNew() {
       </div>
     `);
 
-    // update the sentibars for each created material
+    // update the sentibar created
     setSentibarValues({
       sentibar: createdElement.find('.sentibar'),
       material: MATERIAL[value]
     });
+
+    // save the reference to the sentibar
+    factSlots.push(createdElement);
 
     dispenserBody.append(createdElement);
   });

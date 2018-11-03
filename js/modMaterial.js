@@ -19,7 +19,7 @@ function fillMaterials() {
   // clean the current material
   disableMaterial();
 
-  const factMaterialAmount = currentFact.material.length;
+  const factMaterialAmount = currentFact.maxMaterial;
 
   materialSelects.each(function(elementIndex) {
     if (elementIndex < factMaterialAmount) {
@@ -54,10 +54,13 @@ function setMaterialInSlot(event) {
   if (event.target.dataset.previousValue) {
     // enable all the <option> that match the previous value of the slot
     setOptionsDisabled(event.target.dataset.previousValue);
+
+    // show the material as available in the FACT module
+    factSlots[event.target.dataset.previousValue].css('opacity', 1);
   }
 
   if (event.target.value === 'null') {
-    event.target.dataset.previousValue = null;
+    delete event.target.dataset.previousValue;
     emptySentibar(sentibar);
   }
   else {
@@ -68,6 +71,10 @@ function setMaterialInSlot(event) {
       sentibar: sentibar,
       material: MATERIAL[parseInt(event.target.value)]
     });
+
+    // update the UI so the selected material is shown as disabled in the FACT
+    // module
+    factSlots[parseInt(event.target.value)].css('opacity', 0.5);
   }
 
   // update the emotional preview for the current material setup

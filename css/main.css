@@ -181,6 +181,21 @@ nav ul, nav ol {
   width: 300px;
 }
 
+.mod-mtl,
+.mod-preview,
+.mod-rslt {
+  height: 350px;
+}
+
+.mod-facts .module-name,
+.mod-mtl .module-name,
+.mod-preview .module-name,
+.mod-rslt .module-name {
+  margin: 10px 0 0 0;
+  color: #66d9ef;
+  text-align: center;
+}
+
 .mod-margin-top {
   margin-top: 96px;
 }
@@ -188,3 +203,4 @@ nav ul, nav ol {
 #debug {
   margin: 0 auto;
 }
+

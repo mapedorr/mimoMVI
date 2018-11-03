@@ -30,11 +30,14 @@
         <button id="next-fact">Recibir Noticia</button>
       </div>
       <div id="fact-desc" class="current-fact bg-white black">
-        <div id="who"><b>¿Quien?.</b><span></span></div>
-        <div id="where"><b>¿Dónde?.</b><span></span></div>
-        <div id="what"><b>¿Qué?.</b><span></span></div>
+        <div id="who"><b>¿Quien?</b><span></span>.</div>
+        <div id="where"><b>¿Dónde?</b><span></span>.</div>
+        <div id="what"><b>¿Qué?</b><span></span>.</div>
         <br>
-        <div id="goal"><b>Objetivo.</b><span></span></div>
+        <div id="goal">
+          <hr>
+          <b>Objetivo.</b>Use el material disponible para <span></span>.
+        </div>
       </div>
       <div id="con-material-dispenser">
         <h3 class="header">Material disponible</h3>
@@ -44,6 +47,7 @@
 
     <!-- MODULE MATERIAL -->
     <div class="mod-mtl mod-margin-top">
+      <h2 class="module-name">Material a usar</h2>
       <div class="con-material">
         <div id="mtl-01" class="row-material">
           <h2>1.</h1>
@@ -154,25 +158,30 @@
 
     <!-- MODULE SEND -->
     <div class="mod-preview mod-margin-top">
+      <h2 class="module-name">Intención noticia</h1>
       <div id="mod-preview-sentibar" class="sentibar">
         <div class="persuade cell">
+          <span>Persuadir</span>
           <div class="fill"></div>
           <div class="value">2</div>
         </div>
         <div class="motivate cell">
+          <span>Motivar</span>
           <div class="fill"></div>
           <div class="value">2</div>
         </div>
         <div class="cajole cell">
+          <span>Engañar</span>
           <div class="fill"></div>
           <div class="value">2</div>
         </div>
         <div class="anger cell">
+          <span>Enojar</span>
           <div class="fill"></div>
           <div class="value">2</div>
         </div>
       </div>
-      <button id="rec">REC</button>
+      <button id="rec">GRABAR</button>
       <div id="con-debug-sum">
         <h4 id="sum-title" class="white">- - - - - - sum - - - - - -</h4>
         <div id="mod-sum-sentibar" class="sentibar">
@@ -212,7 +221,7 @@
           <h3></h3>
         </div>
       </div>
-      <button id="end-day">¡End day!</button>
+      <button id="end-day">Terminar por hoy</button>
     </div>
   </div>
   <div id="debug">
