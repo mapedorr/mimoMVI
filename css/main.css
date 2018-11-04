@@ -188,12 +188,24 @@ nav ul, nav ol {
 }
 
 .mod-facts .module-name,
+.mod-facts .module-desc,
 .mod-mtl .module-name,
+.mod-mtl .module-desc,
 .mod-preview .module-name,
-.mod-rslt .module-name {
+.mod-preview .module-desc,
+.mod-rslt .module-name,
+.mod-rslt .module-desc {
   margin: 10px 0 0 0;
   color: #66d9ef;
   text-align: center;
+}
+
+.mod-facts .module-desc,
+.mod-mtl .module-desc,
+.mod-preview .module-desc,
+.mod-rslt .module-desc {
+  margin-top: 5px;
+  opacity: 0.8;
 }
 
 .mod-margin-top {

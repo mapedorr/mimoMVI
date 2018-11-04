@@ -36,7 +36,10 @@
         <br>
         <div id="goal">
           <hr>
-          <b>Objetivo.</b>Use el material disponible para <span></span>.
+          <b>Objetivo</b>
+          <br>
+          Use el material disponible para <span></span>.
+          <div id="goal-avoid">Evite <span></span>.</div>
         </div>
       </div>
       <div id="con-material-dispenser">
@@ -48,6 +51,7 @@
     <!-- MODULE MATERIAL -->
     <div class="mod-mtl mod-margin-top">
       <h2 class="module-name">Material a usar</h2>
+      <p class="module-desc">(será emitido del 1 al 4)</p>
       <div class="con-material">
         <div id="mtl-01" class="row-material">
           <h2>1.</h1>
@@ -156,7 +160,7 @@
       </div>
     </div>
 
-    <!-- MODULE SEND -->
+    <!-- MODULE PREVIEW -->
     <div class="mod-preview mod-margin-top">
       <h2 class="module-name">Intención noticia</h1>
       <div id="mod-preview-sentibar" class="sentibar">
@@ -230,10 +234,12 @@
   </div>
   <!-- scripts loading -->
   <script src="js/main.js"></script>
+  <script src="js/data.js"></script>
   <script src="js/sentibar.js"></script>
   <script src="js/modFacts.js"></script>
   <script src="js/modMaterial.js"></script>
   <script src="js/modPreview.js"></script>
+  <script src="js/modResults.js"></script>
   <script src="js/jquery.js"></script>
 </body>
 

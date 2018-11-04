@@ -20,28 +20,28 @@ function setSentibarValues(data) {
   data.sentibar
     .find('.persuade .fill')
     .height(
-      `${(data.amplitudeLevel || MTL_AMPLITUDE_LEVEL) * data.material.p}%`
+      `${(data.amplitudeLevel || MTL_AMP_PCT) * data.material.p}%`
     );
 
   data.sentibar.find('.motivate .value').text(data.material.m);
   data.sentibar
     .find('.motivate .fill')
     .height(
-      `${(data.amplitudeLevel || MTL_AMPLITUDE_LEVEL) * data.material.m}%`
+      `${(data.amplitudeLevel || MTL_AMP_PCT) * data.material.m}%`
     );
 
   data.sentibar.find('.cajole .value').text(data.material.c);
   data.sentibar
     .find('.cajole .fill')
     .height(
-      `${(data.amplitudeLevel || MTL_AMPLITUDE_LEVEL) * data.material.c}%`
+      `${(data.amplitudeLevel || MTL_AMP_PCT) * data.material.c}%`
     );
 
   data.sentibar.find('.anger .value').text(data.material.a);
   data.sentibar
     .find('.anger .fill')
     .height(
-      `${(data.amplitudeLevel || MTL_AMPLITUDE_LEVEL) * data.material.a}%`
+      `${(data.amplitudeLevel || MTL_AMP_PCT) * data.material.a}%`
     );
 }
 
