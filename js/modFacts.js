@@ -19,15 +19,12 @@ const moduleFacts = {
       where: $('#fact-desc #where'),
       what: $('#fact-desc #what'),
       goal: $('#fact-desc #goal'),
-      goalAvoid: $('#fact-desc #goal #goal-avoid')
+      goalAvoid: $('#fact-desc #goal #goal-avoid'),
+      status: $('#status')
     };
 
     // hide elements that will only appear when the player ask for a fact
-    factDesc.who.hide();
-    factDesc.where.hide();
-    factDesc.what.hide();
-    factDesc.goal.hide();
-    conMaterialDispenser.hide();
+    this.hideFactDesc();
 
     // set event listeners
     nextFactButton.on('click', this.showCurrentNew);
@@ -86,8 +83,9 @@ const moduleFacts = {
     else {
       factDesc.goalAvoid.hide();
     }
-
     factDesc.goal.show();
+    factDesc.status.find('span').text('En progreso');
+    factDesc.status.show();
 
     // show the material available for the fact
     const dispenserBody = conMaterialDispenser.children('.body');
@@ -138,5 +136,20 @@ const moduleFacts = {
     if (currentFactIndex === dayFacts.length) {
       setButtonDisabled(nextFactButton);
     }
+  },
+
+  reset: function() {
+    conMaterialDispenser.find('.material-slot').remove();
+    factSlots = [];
+    conMaterialDispenser.hide();
+  },
+
+  hideFactDesc: function() {
+    factDesc.who.hide();
+    factDesc.where.hide();
+    factDesc.what.hide();
+    factDesc.goal.hide();
+    factDesc.status.hide();
+    conMaterialDispenser.hide();
   }
 };

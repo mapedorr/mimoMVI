@@ -25,6 +25,8 @@ const GOAL_TYPE = {
 const POPULATION = 20000;
 const MTL_AMP_LEVELS = 3;
 const MTL_AMP_PCT = 100 / MTL_AMP_LEVELS;
+const GREAT_IMPACT = [1500, 2500];
+const NORMAL_IMPACT = [500, 1500];
 
 /**
  * V A R I A B L E S ──────────────────────────────────────────────────────────
@@ -33,7 +35,7 @@ let currentDay = MAX_DAYS;
 let votingIntentions = {
   a: POPULATION * 0.4,
   b: POPULATION * 0.4,
-  n: POPULATION * 0.2
+  u: POPULATION * 0.2
 };
 let dayFacts = null;
 let currentFact = null;
@@ -64,6 +66,7 @@ let conDebugSum = null;
 // - - - module: results
 let endDayButton = null;
 let votingGroups = null;
+let endDayButtonDesc = null;
 // - - - debug
 let showNumbersCheck = null;
 let showSumCheck = null;
@@ -89,8 +92,8 @@ function turnOnMimo() {
   showNumbersCheck = $('#debug-show-numbers');
   showSumCheck = $('#debug-show-sum');
 
-  showNumbersCheck.val([(debugShowNumbers) ? 'showNumbers' : '']);
-  showSumCheck.val([(debugShowSum) ? 'showSum' : '']);
+  showNumbersCheck.val([debugShowNumbers ? 'showNumbers' : '']);
+  showSumCheck.val([debugShowSum ? 'showSum' : '']);
   updateDebug();
 
   // set event listeners
@@ -120,14 +123,13 @@ function startGame() {
 }
 
 function getVotingPercentage(amount) {
-  return amount / POPULATION * 100;
+  return Math.round((amount / POPULATION) * 100);
 }
 
 function setButtonDisabled(button, enable) {
   if (enable) {
     button.removeAttr('disabled');
-  }
-  else {
+  } else {
     button.attr('disabled', 'disabled');
   }
 }
@@ -144,9 +146,13 @@ function toggleShowSum() {
 
 function updateDebug() {
   const allSentibarsNumbers = $('.sentibar .value');
-  (debugShowNumbers === true) ?
-    allSentibarsNumbers.show() :
-    allSentibarsNumbers.hide();
+  debugShowNumbers === true
+    ? allSentibarsNumbers.show()
+    : allSentibarsNumbers.hide();
 
-  (debugShowSum === true) ? conDebugSum.show() : conDebugSum.hide();
+  debugShowSum === true ? conDebugSum.show() : conDebugSum.hide();
+}
+
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }

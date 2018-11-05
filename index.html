@@ -15,12 +15,12 @@
 </head>
 
 <body onload="turnOnMimo()">
-  <h1 id="machine-name">
+  <!-- <h1 id="machine-name">
     <span class="yellow">M.</span>
     <span class="green">i.</span>
     <span class="purple">M.</span>
     <span class="fuschia">o.</span>
-  </h1>
+  </h1> -->
   <div id="mimo">
     <!-- MODULE FACTS -->
     <div class="mod-facts">
@@ -41,6 +41,7 @@
           Use el material disponible para <span></span>.
           <div id="goal-avoid">Evite <span></span>.</div>
         </div>
+        <div id="status"><b>Estado.</b><span></span></div>
       </div>
       <div id="con-material-dispenser">
         <h3 class="header">Material disponible</h3>
@@ -162,7 +163,8 @@
 
     <!-- MODULE PREVIEW -->
     <div class="mod-preview mod-margin-top">
-      <h2 class="module-name">Intención noticia</h1>
+      <h2 class="module-name">Intención de noticia</h1>
+      <p class="module-desc">(después de grabar tome la siguiente noticia)</p>
       <div id="mod-preview-sentibar" class="sentibar">
         <div class="persuade cell">
           <span>Persuadir</span>
@@ -211,6 +213,8 @@
 
     <!-- MODULE RESULTS -->
     <div class="mod-rslt mod-margin-top">
+      <h2 class="module-name">Encuestas</h2>
+      <p class="module-desc">(cada noticia emitida las afecta)</p>
       <div class="con-groups">
         <div class="group" id="groupA">
           <h2></h2>
@@ -220,12 +224,13 @@
           <h2></h2>
           <h3></h3>
         </div>
-        <div class="group" id="groupN">
+        <div class="group" id="groupU">
           <h2>No sabe.</h2>
           <h3></h3>
         </div>
       </div>
-      <button id="end-day">Terminar por hoy</button>
+      <button id="end-day">Terminar día</button>
+      <p id="end-day-desc" class="module-desc">Úselo para recibir nuevas noticias</p>
     </div>
   </div>
   <div id="debug">

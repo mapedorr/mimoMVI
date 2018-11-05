@@ -108,5 +108,17 @@ const moduleMaterial = {
     } else {
       options.removeAttr('disabled');
     }
+  },
+
+  reset: function() {
+    materialSelects.each((index, element) => {
+      delete element.dataset.previousValue;
+      delete element.dataset.previousIndex;
+    });
+
+    this.disableMaterial();
+    materialSentibars.each((index, element) => {
+      emptySentibar($(element));
+    });
   }
 };

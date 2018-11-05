@@ -87,42 +87,29 @@ const modulePreview = {
   recordNews: function() {
     setButtonDisabled(recButton);
 
-    let highestValue = 0;
-    let lowestValue = MTL_AMP_LEVELS * currentFact.maxMaterial;
-    let highestEmotion = null;
-    let lowestEmotion = null;
-
-    // based on the value of each emotion, modify the voting intention of people
-    // get the emotion with the greatest value
-    var newsEmotion = getSentibarValues(modSendSentibar);
-
-    for (const emotionKey in newsEmotion) {
-      if (newsEmotion.hasOwnProperty(emotionKey)) {
-        if (newsEmotion[emotionKey] > highestValue) {
-          if (highestValue < lowestValue) {
-            lowestValue = highestValue;
-            lowestEmotion = emotionKey;
-          }
-
-          highestValue = newsEmotion[emotionKey];
-          highestEmotion = emotionKey;
-        }
-        else if (newsEmotion[emotionKey] < lowestValue) {
-          lowestValue = newsEmotion[emotionKey];
-          lowestEmotion = emotionKey;
-        }
-      }
+    if (currentFact.goal) {
+      moduleResults.calculateNewsImpact(getSentibarValues(modSendSentibar));
     }
 
-    // check if the highest emotion matches the target emotion
-    if (highestEmotion === currentFact.goal) {
-      // a winner is you!
+    factDesc.status.find('span').text('Enviado a emisión');
+
+    if (currentFactIndex < dayFacts.length) {
+      // allow the player to get the next new
+      setButtonDisabled(nextFactButton, true);
     }
-    else if (highestEmotion === currentFact.goalAvoid) {
-      // a loser is you!
+    else {
+      // allow the player to end the day
+      setButtonDisabled(endDayButton, true);
+      endDayButtonDesc.show();
     }
-    else if (lowestEmotion === currentFact.goal) {
-      // ???
-    }
+
+    // reset all the modules
+    moduleFacts.reset();
+    moduleMaterial.reset();
+    modulePreview.reset();
+  },
+
+  reset: function() {
+    emptySentibar(modSendSentibar);
   }
 };
