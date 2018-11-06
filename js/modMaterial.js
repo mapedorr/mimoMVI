@@ -13,6 +13,8 @@ const moduleMaterial = {
     modMaterial = $('.mod-mtl');
     materialSelects = modMaterial.find('select');
     materialSentibars = modMaterial.find('.sentibar');
+
+    materialSentibars.hide();
   },
 
   /**
@@ -21,6 +23,7 @@ const moduleMaterial = {
   disableMaterial: function() {
     materialSelects.children('[value!="null"]').remove();
     materialSelects.attr('disabled', 'disabled');
+    materialSentibars.hide();
   },
 
   /**
@@ -81,7 +84,7 @@ const moduleMaterial = {
 
       setSentibarValues({
         sentibar: sentibar,
-        material: MATERIAL[parseInt(event.target.value)]
+        material: MATERIAL[event.target.value]
       });
 
       // update the UI so the selected material is shown as disabled in the FACT

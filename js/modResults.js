@@ -28,67 +28,65 @@ const moduleResults = {
    * Sets the values for voting intentions based on the impact of the news.
    */
   updateVotingIntentions: function() {
-    const votingPctA = `${getVotingPercentage(votingIntentions.a)}%`;
-    const votingPctB = `${getVotingPercentage(votingIntentions.b)}%`;
-    const votingPctU = `${getVotingPercentage(votingIntentions.u)}%`;
+    const votingPctA = getVotingPercentage(votingIntentions.a);
+    const votingPctB = getVotingPercentage(votingIntentions.b);
+    const votingPctU = getVotingPercentage(votingIntentions.u);
+    const votingPctAText = `${votingPctA}%`;
+    const votingPctBText = `${votingPctB}%`;
+    const votingPctUText = `${votingPctU}%`;
 
-    votingGroups.a.children('h3').text(votingPctA);
+    if (candidateAStart === -1) {
+      candidateAStart = votingPctA;
+      candidateBStart = votingPctB;
+    } else {
+      candidateAIncrease = votingPctA;
+      candidateBIncrease = votingPctB;
+    }
+
+    votingGroups.a.children('h3').text(votingPctAText);
     votingGroups.a.children('h2').text(`${candidateA}.`);
-    votingGroups.a.children('.fill').css('width', votingPctA);
+    votingGroups.a.children('.fill').css('width', votingPctAText);
 
-    votingGroups.b.children('h3').text(votingPctB);
+    votingGroups.b.children('h3').text(votingPctBText);
     votingGroups.b.children('h2').text(`${candidateB}.`);
-    votingGroups.b.children('.fill').css('width', votingPctB);
+    votingGroups.b.children('.fill').css('width', votingPctBText);
 
-    votingGroups.u.children('h3').text(votingPctU);
-    votingGroups.u.children('.fill').css('width', votingPctU);
+    votingGroups.u.children('h3').text(votingPctUText);
+    votingGroups.u.children('.fill').css('width', votingPctUText);
   },
 
   /**
-   * Based on the value of each emotion, modify the voting intention of people.
+   * Based on the percentage of each emotion, modify the voting intention of people.
    *
-   * @param {*} newsEmotion
+   * @param {*} newsEmotionPcts
    */
-  calculateNewsImpact: function(newsEmotion) {
-    let highestValue = 0;
-    let lowestValue = MTL_AMP_LEVELS * currentFact.maxMaterial;
+  calculateNewsImpact: function(newsEmotionPcts) {
+    let peopleSuccess = 0;
+    let peopleFailure = 0;
+    const avoidPct = newsEmotionPcts[currentFact.goalAvoid];
+    const goalPct = newsEmotionPcts[currentFact.goal];
 
-    for (const emotionKey in newsEmotion) {
-      if (newsEmotion.hasOwnProperty(emotionKey)) {
-        if (newsEmotion[emotionKey] > highestValue) {
-          if (highestValue < lowestValue) {
-            lowestValue = highestValue;
-          }
+    // check if the player succeeded
+    if (avoidPct > goalPct) {
+      // - - - a loser is you! - - -
+      alert('¡Tenga cuidado! Ha generado una emoción no deseada.');
 
-          highestValue = newsEmotion[emotionKey];
-        } else if (newsEmotion[emotionKey] < lowestValue) {
-          lowestValue = newsEmotion[emotionKey];
-        }
+      // take a range to calculate the impact based on the percentage of the emotion
+      peopleFailure = this.getPeopleNumber(avoidPct);
+
+      if (votingIntentions[currentFact.assignTo] >= peopleFailure) {
+        votingIntentions[currentFact.assignTo] -= peopleFailure;
+        votingIntentions[currentFact.takeFrom] += peopleFailure;
       }
-    }
-
-    if (newsEmotion[currentFact.goalAvoid] === highestValue) {
-      // a loser is you!
-      // take a GREAT random number of people and affect their voting intention
-      // opposed to the fact purpose
-      const peopleToAffect = randomInt(GREAT_IMPACT[0], GREAT_IMPACT[1]);
-      votingIntentions[currentFact.assignTo] -= peopleToAffect;
-      votingIntentions[currentFact.takeFrom] += peopleToAffect;
     } else {
-      // check if the highest emotion matches the target emotion
-      if (newsEmotion[currentFact.goal] === highestValue) {
-        // a winner is you!
-        // take a GREAT random number of people and affect their voting intention
-        // according to the fact purpose
-        const peopleToAffect = randomInt(GREAT_IMPACT[0], GREAT_IMPACT[1]);
-        votingIntentions[currentFact.takeFrom] -= peopleToAffect;
-        votingIntentions[currentFact.assignTo] += peopleToAffect;
-      } else {
-        // take a NORMAL random number of people and affect their voting intention
-        // according to the fact purpose
-        const peopleToAffect = randomInt(NORMAL_IMPACT[0], NORMAL_IMPACT[1]);
-        votingIntentions[currentFact.takeFrom] -= peopleToAffect;
-        votingIntentions[currentFact.assignTo] += peopleToAffect;
+      // - - - a winner is you! - - -
+
+      // take a range to calculate the impact based on the percentage of the emotion
+      peopleSuccess = this.getPeopleNumber(goalPct);
+
+      if (votingIntentions[currentFact.takeFrom] >= peopleSuccess) {
+        votingIntentions[currentFact.takeFrom] -= peopleSuccess;
+        votingIntentions[currentFact.assignTo] += peopleSuccess;
       }
     }
 
@@ -104,12 +102,43 @@ const moduleResults = {
   },
 
   /**
+   * Generates a random number from a range that is calculated based on a percentage.
+   * @param {Number} percentageRange The percentage used to calculated the range
+   * to use to get a random number.
+   */
+  getPeopleNumber: function(percentageRange) {
+    const from = (NEWS_IMPACT[1] * percentageRange) / 100 + NEWS_IMPACT[0];
+    const to = percentageRange >= 50 ? NEWS_IMPACT[1] : NEWS_IMPACT[0];
+
+    return randomInt(from, to);
+  },
+
+  /**
    * Ends the day by calculating how the voting intentions changed.
    */
   nextDay: function() {
-    alert('¡AÚN NO ESTÁ LISTO!');
-    // moduleFacts.setDay();
-    // moduleFacts.hideFactDesc();
-    // endDayButtonDesc.hide();
+    setButtonEnabled(endDayButton);
+
+    // show feedbak to the player about her efficiency
+    let message = '';
+    if (candidateAStart < candidateAIncrease) {
+      message = `¡Muy bien! La intención de voto por ${candidateA} ha aumentado un ${candidateAIncrease -
+        candidateAStart}%`;
+    }
+    else {
+      message = `¡Pilas! La intención de voto por ${candidateA} ha disminuido en ${candidateAIncrease -
+        candidateAStart}%`;
+    }
+    alert(message);
+
+    currentFactIndex = 0;
+    candidateAStart = getVotingPercentage(votingIntentions.a);
+    candidateBStart = getVotingPercentage(votingIntentions.b);
+
+    moduleFacts.hideFactDesc();
+    endDayButtonDesc.hide();
+    setButtonEnabled(nextFactButton, true);
+
+    moduleFacts.setDay();
   }
 };

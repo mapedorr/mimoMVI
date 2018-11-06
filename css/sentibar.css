@@ -21,16 +21,16 @@
   font-weight: normal;
 }
 
-.sentibar .persuade span {
+.sentibar .pe1 span {
   color: #fbfb79;
 }
-.sentibar .motivate span {
+.sentibar .pe2 span {
   color: #7cbc79;
 }
-.sentibar .cajole span {
+.sentibar .ne1 span {
   color: #bc7cb9;
 }
-.sentibar .anger span {
+.sentibar .ne2 span {
   color: #fb7c79;
 }
 
@@ -47,18 +47,18 @@
   opacity: 0.5;
 }
 
-.sentibar .persuade .fill {
+.sentibar .pe1 .fill {
   background-color: yellow;
 }
 
-.sentibar .motivate .fill {
+.sentibar .pe2 .fill {
   background-color: green;
 }
 
-.sentibar .cajole .fill {
+.sentibar .ne1 .fill {
   background-color: purple;
 }
 
-.sentibar .anger .fill {
+.sentibar .ne2 .fill {
   background-color: red;
 }

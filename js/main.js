@@ -1,7 +1,11 @@
 /**
- * ╔══════════╗
- * ║ M.i.M.o. ║
- * ╚══════════╝
+ * ╔═════════════════╗
+ * ║ M.i.M.o. (v0.1) ║
+ * ╚═════════════════╝
+ * 
+ * Pregunta que busca resolver el prototipo:
+ * ¿Que se manipulen las emociones transmite el mensaje que queremos? ¿Es entretenido
+ * hacerlo como lo planteamos?
  */
 
 /**
@@ -12,27 +16,26 @@ const candidateB = 'Sutano';
 const MAX_DAYS = 3;
 // sobre emociones: https://bit.ly/2G8qzAX
 const INTENTIONS = {
-  p: 'Optimismo',
-  m: 'Confianza',
-  c: 'Miedo',
-  a: 'Desprecio'
+  pe1: 'Alegría',
+  pe2: 'Confianza',
+  ne1: 'Miedo',
+  ne2: 'Ira'
 };
 const GOAL_TYPE = {
-  p: 'p',
-  m: 'm',
-  c: 'c',
-  a: 'a'
+  pe1: 'pe1',
+  pe2: 'pe2',
+  ne1: 'ne1',
+  ne2: 'ne2'
 };
 const POPULATION = 20000;
 const MTL_AMP_LEVELS = 3;
 const MTL_AMP_PCT = 100 / MTL_AMP_LEVELS;
-const GREAT_IMPACT = [1500, 2500];
-const NORMAL_IMPACT = [500, 1500];
+const NEWS_IMPACT = [200, 1500];
 
 /**
  * V A R I A B L E S ──────────────────────────────────────────────────────────
  */
-let currentDay = MAX_DAYS;
+let currentDay = 0;
 let votingIntentions = {
   a: POPULATION * 0.4,
   b: POPULATION * 0.4,
@@ -44,6 +47,10 @@ let currentFactIndex = 0;
 let debugShowNumbers = false;
 let debugShowSum = false;
 let affectedPeople = [];
+let candidateAIncrease = 0;
+let candidateBIncrease = 0;
+let candidateAStart = -1;
+let candidateBStart = -1;
 
 /**
  * U I   E L E M E N T S ──────────────────────────────────────────────────────
@@ -76,6 +83,9 @@ let showSumCheck = null;
  * F U N C T I O N S ──────────────────────────────────────────────────────────
  */
 function turnOnMimo() {
+  // initialize global variables
+  currentDay = MAX_DAYS;
+
   // store UI elements
   // module: facts
   moduleFacts.start();
@@ -108,7 +118,6 @@ function startGame() {
   moduleFacts.setDay();
 
   // disable the <select> for fact materials
-  materialSentibars.hide();
   moduleMaterial.disableMaterial();
 
   // set values for SEND's sentibar
@@ -119,15 +128,15 @@ function startGame() {
   moduleResults.updateVotingIntentions();
 
   // disable buttons
-  setButtonDisabled(recButton);
-  setButtonDisabled(endDayButton);
+  setButtonEnabled(recButton);
+  setButtonEnabled(endDayButton);
 }
 
 function getVotingPercentage(amount) {
   return Math.round((amount / POPULATION) * 100);
 }
 
-function setButtonDisabled(button, enable) {
+function setButtonEnabled(button, enable) {
   if (enable) {
     button.removeAttr('disabled');
   } else {

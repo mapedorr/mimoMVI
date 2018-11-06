@@ -10,46 +10,53 @@
  */
 function emptySentibar(sentibar) {
   sentibar.find('.cell .value').text(0);
-  sentibar.find('.cell .fill').height('0%');
+  sentibar.find('.cell .fill').css('height', '0%');
 }
 
 function setSentibarValues(data) {
   emptySentibar(data.sentibar);
 
-  data.sentibar.find('.persuade .value').text(data.material.p);
-  data.sentibar
-    .find('.persuade .fill')
-    .height(
-      `${(data.amplitudeLevel || MTL_AMP_PCT) * data.material.p}%`
-    );
+  const sentibarPersuade = data.sentibar.find('.pe1');
+  const sentibarMotivate = data.sentibar.find('.pe2');
+  const sentibarCajole = data.sentibar.find('.ne1');
+  const sentibarAnger = data.sentibar.find('.ne2');
 
-  data.sentibar.find('.motivate .value').text(data.material.m);
-  data.sentibar
-    .find('.motivate .fill')
-    .height(
-      `${(data.amplitudeLevel || MTL_AMP_PCT) * data.material.m}%`
-    );
+  const pctPersuade = Math.round((data.amplitudeLevel || MTL_AMP_PCT) * data.material.pe1);
+  const pctMotivate = Math.round((data.amplitudeLevel || MTL_AMP_PCT) * data.material.pe2);
+  const pctCajole = Math.round((data.amplitudeLevel || MTL_AMP_PCT) * data.material.ne1);
+  const pctAnger = Math.round((data.amplitudeLevel || MTL_AMP_PCT) * data.material.ne2);
 
-  data.sentibar.find('.cajole .value').text(data.material.c);
-  data.sentibar
-    .find('.cajole .fill')
-    .height(
-      `${(data.amplitudeLevel || MTL_AMP_PCT) * data.material.c}%`
-    );
-
-  data.sentibar.find('.anger .value').text(data.material.a);
-  data.sentibar
-    .find('.anger .fill')
-    .height(
-      `${(data.amplitudeLevel || MTL_AMP_PCT) * data.material.a}%`
-    );
+  sentibarPersuade.data('pct', pctPersuade);
+  sentibarPersuade.children('.value').text(data.material.pe1);
+  sentibarPersuade.children('.fill').css('height', `${pctPersuade}%`);
+  
+  sentibarMotivate.data('pct', pctMotivate);
+  sentibarMotivate.children('.value').text(data.material.pe2);
+  sentibarMotivate.children('.fill').css( 'height', `${pctMotivate}%` );
+  
+  sentibarCajole.data('pct', pctCajole);
+  sentibarCajole.children('.value').text(data.material.ne1);
+  sentibarCajole.children('.fill').css( 'height', `${pctCajole}%` );
+  
+  sentibarAnger.data('pct', pctAnger);
+  sentibarAnger.children('.value').text(data.material.ne2);
+  sentibarAnger.children('.fill').css( 'height', `${pctAnger}%` );
 }
 
 function getSentibarValues(sentibar) {
   return {
-    p: parseInt(sentibar.find('.persuade .value').text()),
-    m: parseInt(sentibar.find('.motivate .value').text()),
-    c: parseInt(sentibar.find('.cajole .value').text()),
-    a: parseInt(sentibar.find('.anger .value').text())
+    pe1: parseInt(sentibar.find('.pe1 .value').text()),
+    pe2: parseInt(sentibar.find('.pe2 .value').text()),
+    ne1: parseInt(sentibar.find('.ne1 .value').text()),
+    ne2: parseInt(sentibar.find('.ne2 .value').text())
+  };
+}
+
+function getSentibarPercentages(sentibar) {
+  return {
+    pe1: parseInt(sentibar.find('.pe1').data('pct')),
+    pe2: parseInt(sentibar.find('.pe2').data('pct')),
+    ne1: parseInt(sentibar.find('.ne1').data('pct')),
+    ne2: parseInt(sentibar.find('.ne2').data('pct'))
   };
 }

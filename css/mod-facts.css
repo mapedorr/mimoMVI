@@ -32,19 +32,19 @@
   padding: 0px 5px;
 }
 
-.mod-facts .current-fact #goal span.pColor {
+.mod-facts .current-fact #goal span.pe1Color {
   background-color: rgba(255, 255, 0, 0.5);
 }
 
-.mod-facts .current-fact #goal span.mColor {
+.mod-facts .current-fact #goal span.pe2Color {
   background-color: rgba(0, 128, 0, 0.5);
 }
 
-.mod-facts .current-fact #goal span.cColor {
+.mod-facts .current-fact #goal span.ne1Color {
   background-color: rgba(128, 0, 128, 0.5);
 }
 
-.mod-facts .current-fact #goal span.aColor {
+.mod-facts .current-fact #goal span.ne2Color {
   background-color: rgba(255, 0, 0, 0.5);
 }
 

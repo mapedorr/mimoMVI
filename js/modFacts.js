@@ -23,7 +23,7 @@ const moduleFacts = {
       status: $('#status')
     };
 
-    // hide elements that will only appear when the player ask for a fact
+    // hide elements that will only appear when the player ask for ne2 fact
     this.hideFactDesc();
 
     // set event listeners
@@ -36,12 +36,21 @@ const moduleFacts = {
   setDay: function() {
     dayCount.text(currentDay--);
 
-    dayFacts = FACTS[MAX_DAYS - currentDay - 1];
+    if (currentDay < 0) {
+      setButtonEnabled(nextFactButton);
+      factsCount.hide();
 
-    if (currentDay <= 0) {
-      alert('the simulation has ended!');
+      setTimeout(() => {
+        if (candidateAStart >= candidateBStart) {
+          alert(`Las elecciones se han llevado a cabo. Gracias a usted ${candidateA} es el nuevo presidente de Elplatanal.`);
+        }
+        else {
+          alert(`Las elecciones se han llevado a cabo. Por su culpa ${candidateB} es el nuevo presidente de Elplatanal.`);
+        }
+      }, 1000);
     }
     else {
+      dayFacts = FACTS[MAX_DAYS - currentDay - 1];
       factsCount.text(`0 / ${dayFacts.length}`);
     }
   },
@@ -52,7 +61,7 @@ const moduleFacts = {
    */
   showCurrentNew: function() {
     // disable the button until the player record the news
-    setButtonDisabled(nextFactButton);
+    setButtonEnabled(nextFactButton);
 
     // remove all the material from the previous fact
     conMaterialDispenser.find('.material-slot').remove();
@@ -63,6 +72,7 @@ const moduleFacts = {
     factsCount.text(`${currentFactIndex} / ${dayFacts.length}`);
 
     // fill and show the description of the fact
+    moduleFacts.fadeFactDesc();
     factDesc.who.find('span').text(currentFact.who);
     factDesc.who.show();
     factDesc.where.find('span').text(currentFact.where);
@@ -104,21 +114,21 @@ const moduleFacts = {
       <div class="material-slot">
         <p class="material-desc">${MATERIAL[value].desc}</p>
         <div class="sentibar">
-          <div class="persuade cell" title="${INTENTIONS.p}">
+          <div class="pe1 cell" title="${INTENTIONS.pe1}">
             <div class="fill"></div>
-            <div class="value">${MATERIAL[value].p}</div>
+            <div class="value">${MATERIAL[value].pe1}</div>
           </div>
-          <div class="motivate cell" title="${INTENTIONS.m}">
+          <div class="pe2 cell" title="${INTENTIONS.pe2}">
             <div class="fill"></div>
-            <div class="value">${MATERIAL[value].m}</div>
+            <div class="value">${MATERIAL[value].pe2}</div>
           </div>
-          <div class="cajole cell" title="${INTENTIONS.c}">
+          <div class="ne1 cell" title="${INTENTIONS.ne1}">
             <div class="fill"></div>
-            <div class="value">${MATERIAL[value].c}</div>
+            <div class="value">${MATERIAL[value].ne1}</div>
           </div>
-          <div class="anger cell" title="${INTENTIONS.a}">
+          <div class="ne2 cell" title="${INTENTIONS.ne2}">
             <div class="fill"></div>
-            <div class="value">${MATERIAL[value].a}</div>
+            <div class="value">${MATERIAL[value].ne2}</div>
           </div>
         </div>
       </div>
@@ -144,7 +154,7 @@ const moduleFacts = {
     moduleMaterial.fillMaterials();
 
     if (currentFactIndex === dayFacts.length) {
-      setButtonDisabled(nextFactButton);
+      setButtonEnabled(nextFactButton);
     }
   },
 
@@ -161,5 +171,20 @@ const moduleFacts = {
     factDesc.goal.hide();
     factDesc.status.hide();
     conMaterialDispenser.hide();
+  },
+
+  fadeFactDesc: function(out) {
+    if (out === true) {
+      factDesc.who.fadeTo(200, 0.5);
+      factDesc.where.fadeTo(200, 0.5);
+      factDesc.what.fadeTo(200, 0.5);
+      factDesc.goal.fadeTo(200, 0.5);
+    }
+    else {
+      factDesc.who.fadeTo(200, 1);
+      factDesc.where.fadeTo(200, 1);
+      factDesc.what.fadeTo(200, 1);
+      factDesc.goal.fadeTo(200, 1);
+    }
   }
 };

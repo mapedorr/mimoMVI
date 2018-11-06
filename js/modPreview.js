@@ -24,20 +24,20 @@ const modulePreview = {
    * the UI.
    */
   updatePreview: function(ignoreSubtraction) {
-    const materialSum = { p: 0, m: 0, c: 0, a: 0 };
+    const materialSum = { pe1: 0, pe2: 0, ne1: 0, ne2: 0 };
     let materialValues = [];
-    let recencySum = { p: 0, m: 0, c: 0, a: 0 };
+    let recencySum = { pe1: 0, pe2: 0, ne1: 0, ne2: 0 };
 
     // sum all the values per emotion
     materialSelects.each((index, element) => {
       if (!element.disabled && element.value !== 'null') {
-        const sentibarValues = MATERIAL[parseInt(element.value)];
+        const sentibarValues = MATERIAL[element.value];
         materialValues.push(sentibarValues);
 
-        materialSum.p += sentibarValues.p;
-        materialSum.m += sentibarValues.m;
-        materialSum.c += sentibarValues.c;
-        materialSum.a += sentibarValues.a;
+        materialSum.pe1 += sentibarValues.pe1;
+        materialSum.pe2 += sentibarValues.pe2;
+        materialSum.ne1 += sentibarValues.ne1;
+        materialSum.ne2 += sentibarValues.ne2;
       }
     });
 
@@ -61,15 +61,13 @@ const modulePreview = {
           }
         }
       }
-
-      console.table(recencySum);
     }
 
     // subtract the recency values to the material sum
-    materialSum.p += recencySum.p;
-    materialSum.m += recencySum.m;
-    materialSum.c += recencySum.c;
-    materialSum.a += recencySum.a;
+    materialSum.pe1 += recencySum.pe1;
+    materialSum.pe2 += recencySum.pe2;
+    materialSum.ne1 += recencySum.ne1;
+    materialSum.ne2 += recencySum.ne2;
 
     setSentibarValues({
       sentibar: modSendSentibar,
@@ -77,7 +75,7 @@ const modulePreview = {
       amplitudeLevel: MTL_AMP_PCT / currentFact.maxMaterial
     });
 
-    setButtonDisabled(recButton, materialValues.length > 0);
+    setButtonEnabled(recButton, materialValues.length > 0);
   },
 
   /**
@@ -85,26 +83,27 @@ const modulePreview = {
    * of people.
    */
   recordNews: function() {
-    setButtonDisabled(recButton);
+    setButtonEnabled(recButton);
 
     if (currentFact.goal) {
-      moduleResults.calculateNewsImpact(getSentibarValues(modSendSentibar));
+      moduleResults.calculateNewsImpact(getSentibarPercentages(modSendSentibar));
     }
 
     factDesc.status.find('span').text('Enviado a emisión');
 
     if (currentFactIndex < dayFacts.length) {
       // allow the player to get the next new
-      setButtonDisabled(nextFactButton, true);
+      setButtonEnabled(nextFactButton, true);
     }
     else {
       // allow the player to end the day
-      setButtonDisabled(endDayButton, true);
+      setButtonEnabled(endDayButton, true);
       endDayButtonDesc.show();
     }
 
     // reset all the modules
     moduleFacts.reset();
+    moduleFacts.fadeFactDesc(true);
     moduleMaterial.reset();
     modulePreview.reset();
   },
