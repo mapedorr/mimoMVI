@@ -22,16 +22,16 @@
 }
 
 .sentibar .persuade span {
-  color: #efe158;
+  color: #fbfb79;
 }
 .sentibar .motivate span {
-  color: #a6e22e;
+  color: #7cbc79;
 }
 .sentibar .cajole span {
-  color: #ae81ff;
+  color: #bc7cb9;
 }
 .sentibar .anger span {
-  color: #ec007c;
+  color: #fb7c79;
 }
 
 .sentibar .cell .value {

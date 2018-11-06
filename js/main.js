@@ -9,12 +9,13 @@
  */
 const candidateA = 'Fulano';
 const candidateB = 'Sutano';
-const MAX_DAYS = 8;
+const MAX_DAYS = 3;
+// sobre emociones: https://bit.ly/2G8qzAX
 const INTENTIONS = {
-  p: 'Persuadir',
-  m: 'Motivar',
-  c: 'Engañar',
-  a: 'Enojar'
+  p: 'Optimismo',
+  m: 'Confianza',
+  c: 'Miedo',
+  a: 'Desprecio'
 };
 const GOAL_TYPE = {
   p: 'p',

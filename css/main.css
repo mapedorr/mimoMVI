@@ -1,3 +1,11 @@
+/*
+Colores emociones:
+  - Optimismo #fbfb79
+  - Confianza #7cbc79
+  - Miedo #bc7cb9
+  - Desprecio #fb7c79
+*/
+
 html {
   font-size: 100%;
 }
@@ -18,14 +26,14 @@ body, button, input, select, textarea, pre {
 
 button {
   border: none;
-  background: #ec007c;
+  background: #0096c1;
   color: #efe158;
   padding: 10px 5px;
 }
 
 button:active {
   background-color: #efe158;
-  color: #ec007c;
+  color: #0096c1;
 }
 
 button:disabled {
@@ -158,10 +166,11 @@ nav ul, nav ol {
 }
 
 #mimo {
-  height: 720px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
   background: #00303e;
   margin: 0 auto;
-  display: flex;
   padding: 15px;
 }
 
@@ -169,14 +178,11 @@ nav ul, nav ol {
   flex: 1 auto;
 }
 
-.mod-facts,
-.mod-mtl,
-.mod-preview,
-.mod-rslt {
+.mod {
   display: flex;
   flex-direction: column;
   padding: 5px;
-  border: 1px dashed #66d9ef;
+  border: 1px dashed #0096c1;
   margin: 2px;
   width: 300px;
 }
@@ -187,30 +193,21 @@ nav ul, nav ol {
   height: 350px;
 }
 
-.mod-facts .module-name,
-.mod-facts .module-desc,
-.mod-mtl .module-name,
-.mod-mtl .module-desc,
-.mod-preview .module-name,
-.mod-preview .module-desc,
-.mod-rslt .module-name,
-.mod-rslt .module-desc {
+.mod .module-name,
+.mod .module-desc {
   margin: 10px 0 0 0;
-  color: #66d9ef;
+  color: #0096c1;
   text-align: center;
 }
 
-.mod-facts .module-desc,
-.mod-mtl .module-desc,
-.mod-preview .module-desc,
-.mod-rslt .module-desc {
+.mod .module-desc {
   margin-top: 5px;
   opacity: 0.8;
 }
 
-.mod-margin-top {
+/* .mod-margin-top {
   margin-top: 96px;
-}
+} */
 
 #debug {
   margin: 0 auto;

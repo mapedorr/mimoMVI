@@ -2,6 +2,7 @@
   margin: 5px;
   padding: 10px;
   text-align: center;
+  color: #0096c1;
 }
 
 .mod-facts .con-progress {
@@ -27,8 +28,8 @@
 }
 
 .mod-facts .current-fact span {
-  background-color: #bff4ff;
-  padding: 0px 10px;
+  /* background-color: #bff4ff; */
+  padding: 0px 5px;
 }
 
 .mod-facts .current-fact #goal span.pColor {
@@ -53,10 +54,16 @@
   margin-bottom: 10px;
 }
 
-#con-material-dispenser .header {
+#con-material-dispenser .header,
+#con-material-dispenser p {
   text-align: center;
   color: #efe158;
   margin: 10px 0;
+}
+
+#con-material-dispenser > p {
+  margin: 5px 0;
+  opacity: 0.8;
 }
 
 #con-material-dispenser .material-desc {

@@ -92,6 +92,12 @@ const moduleResults = {
       }
     }
 
+    for (const group in votingIntentions) {
+      if (votingIntentions.hasOwnProperty(group)) {
+        votingIntentions[group] = Math.max(votingIntentions[group], 0);
+      }
+    }
+
     // update the UI so the player can see how her actions affected the voting
     // intentions
     this.updateVotingIntentions();
@@ -101,8 +107,9 @@ const moduleResults = {
    * Ends the day by calculating how the voting intentions changed.
    */
   nextDay: function() {
-    moduleFacts.setDay();
-    moduleFacts.hideFactDesc();
-    endDayButtonDesc.hide();
+    alert('¡AÚN NO ESTÁ LISTO!');
+    // moduleFacts.setDay();
+    // moduleFacts.hideFactDesc();
+    // endDayButtonDesc.hide();
   }
 };

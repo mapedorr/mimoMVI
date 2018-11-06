@@ -1,7 +1,7 @@
 const MATERIAL = {
   // listados de adj. y sus. https://bit.ly/2JB6mSP 
-  0: { desc: 'adulto contento', p: 2, m: 3, c: 1, a: 0 },
-  1: { desc: 'adulto indigando', p: 1, m: 0, c: 2, a: 3 },
+  0: { desc: 'adultos contentos', p: 2, m: 3, c: 1, a: 0 },
+  1: { desc: 'adultos indigandos', p: 1, m: 0, c: 2, a: 3 },
   2: { desc: 'casas bonitas', p: 2, m: 3, c: 2, a: 0 },
   3: { desc: 'casas descuidadas', p: 1, m: 0, c: 3, a: 2 },
   4: { desc: 'jugadas agresivas', p: 0, m: 3, c: 0, a: 3 },
@@ -12,9 +12,9 @@ const FACTS = [
   [
     {
       who: candidateA,
-      where: 'En debate',
-      what: 'Hablando de propuestas para Economía',
-      goal: GOAL_TYPE.c,
+      where: 'En debate TV',
+      what: 'Habla de propuestas para Economía',
+      goal: GOAL_TYPE.m,
       goalAvoid: GOAL_TYPE.a,
       material: [0, 1, 2, 3],
       maxMaterial: 2,
@@ -23,8 +23,8 @@ const FACTS = [
     },
     {
       who: candidateB,
-      where: 'En debate',
-      what: 'Hablando de propuestas para Economía',
+      where: 'En debate TV',
+      what: 'Habla de propuestas para Economía',
       goal: GOAL_TYPE.a,
       goalAvoid: GOAL_TYPE.m,
       material: [0, 1, 2, 3],

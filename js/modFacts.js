@@ -41,6 +41,9 @@ const moduleFacts = {
     if (currentDay <= 0) {
       alert('the simulation has ended!');
     }
+    else {
+      factsCount.text(`0 / ${dayFacts.length}`);
+    }
   },
 
   /**
@@ -67,24 +70,31 @@ const moduleFacts = {
     factDesc.what.find('span').text(currentFact.what);
     factDesc.what.show();
 
-    const goalSpan = factDesc.goal.find('span');
-    goalSpan.text(currentFact.goal ? INTENTIONS[currentFact.goal] : 'Informar');
-    goalSpan.removeClass();
-    goalSpan.addClass(currentFact.goal + 'Color');
+    if (currentFact.goal) {
+      const goalSpan = factDesc.goal.find('span');
+      goalSpan.text(currentFact.goal ? INTENTIONS[currentFact.goal] : 'Informar');
+      goalSpan.removeClass();
+      goalSpan.addClass(currentFact.goal + 'Color');
+  
+      if (currentFact.goalAvoid) {
+        goalAvoidSpan = factDesc.goalAvoid.find('span');
+        goalAvoidSpan.text(currentFact.goal ? INTENTIONS[currentFact.goalAvoid] : '');
+        goalAvoidSpan.removeClass();
+        goalAvoidSpan.addClass(currentFact.goalAvoid + 'Color');
+  
+        factDesc.goalAvoid.show();
+      }
+      else {
+        factDesc.goalAvoid.hide();
+      }
 
-    if (currentFact.goalAvoid) {
-      goalAvoidSpan = factDesc.goalAvoid.find('span');
-      goalAvoidSpan.text(currentFact.goal ? INTENTIONS[currentFact.goalAvoid] : '');
-      goalAvoidSpan.removeClass();
-      goalAvoidSpan.addClass(currentFact.goalAvoid + 'Color');
-
-      factDesc.goalAvoid.show();
+      factDesc.goal.show();
     }
     else {
-      factDesc.goalAvoid.hide();
+      factDesc.goal.hide();
     }
-    factDesc.goal.show();
-    factDesc.status.find('span').text('En progreso');
+
+    factDesc.status.find('span').text('En edición');
     factDesc.status.show();
 
     // show the material available for the fact
@@ -94,19 +104,19 @@ const moduleFacts = {
       <div class="material-slot">
         <p class="material-desc">${MATERIAL[value].desc}</p>
         <div class="sentibar">
-          <div class="persuade cell">
+          <div class="persuade cell" title="${INTENTIONS.p}">
             <div class="fill"></div>
             <div class="value">${MATERIAL[value].p}</div>
           </div>
-          <div class="motivate cell">
+          <div class="motivate cell" title="${INTENTIONS.m}">
             <div class="fill"></div>
             <div class="value">${MATERIAL[value].m}</div>
           </div>
-          <div class="cajole cell">
+          <div class="cajole cell" title="${INTENTIONS.c}">
             <div class="fill"></div>
             <div class="value">${MATERIAL[value].c}</div>
           </div>
-          <div class="anger cell">
+          <div class="anger cell" title="${INTENTIONS.a}">
             <div class="fill"></div>
             <div class="value">${MATERIAL[value].a}</div>
           </div>

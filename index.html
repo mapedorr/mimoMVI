@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" media="screen" href="css/mod-mtl.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="css/mod-preview.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="css/mod-rslt.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/mod-help.css" />
 </head>
 
 <body onload="turnOnMimo()">
@@ -23,11 +24,11 @@
   </h1> -->
   <div id="mimo">
     <!-- MODULE FACTS -->
-    <div class="mod-facts">
+    <div class="mod mod-facts">
       <h1><b id="day-count">?</b> días restantes</h1>
       <div class="con-progress">
         <h3 id="facts-count"></h3>
-        <button id="next-fact">Recibir Noticia</button>
+        <button id="next-fact">Tomar noticia</button>
       </div>
       <div id="fact-desc" class="current-fact bg-white black">
         <div id="who"><b>¿Quien?</b><span></span>.</div>
@@ -38,21 +39,25 @@
           <hr>
           <b>Objetivo</b>
           <br>
-          Use el material disponible para <span></span>.
-          <div id="goal-avoid">Evite <span></span>.</div>
+          Use el material disponible para causar <span></span>.
+          <div id="goal-avoid">Evite causar <span></span>.</div>
         </div>
-        <div id="status"><b>Estado.</b><span></span></div>
+        <div id="status">
+          <hr>
+          <b>Estado.</b><span></span>
+        </div>
       </div>
       <div id="con-material-dispenser">
         <h3 class="header">Material disponible</h3>
+        <p>(ponga el cursor sobre el color para ver una descripción)</p>
         <div class="body"></div>
       </div>
     </div>
 
     <!-- MODULE MATERIAL -->
-    <div class="mod-mtl mod-margin-top">
+    <div class="mod mod-mtl mod-margin-top">
       <h2 class="module-name">Material a usar</h2>
-      <p class="module-desc">(será emitido del 1 al 4)</p>
+      <p class="module-desc">(el material se presenta del 1 al 4)</p>
       <div class="con-material">
         <div id="mtl-01" class="row-material">
           <h2>1.</h1>
@@ -62,19 +67,19 @@
               </select>
             </div>
             <div class="sentibar">
-              <div class="persuade cell">
+              <div class="persuade cell" title="Optimismo">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="motivate cell">
+              <div class="motivate cell" title="Confianza">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="cajole cell">
+              <div class="cajole cell" title="Miedo">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="anger cell">
+              <div class="anger cell" title="Desprecio">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
@@ -88,19 +93,19 @@
               </select>
             </div>
             <div class="sentibar">
-              <div class="persuade cell">
+              <div class="persuade cell" title="Optimismo">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="motivate cell">
+              <div class="motivate cell" title="Confianza">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="cajole cell">
+              <div class="cajole cell" title="Miedo">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="anger cell">
+              <div class="anger cell" title="Desprecio">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
@@ -114,19 +119,19 @@
               </select>
             </div>
             <div class="sentibar">
-              <div class="persuade cell">
+              <div class="persuade cell" title="Optimismo">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="motivate cell">
+              <div class="motivate cell" title="Confianza">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="cajole cell">
+              <div class="cajole cell" title="Miedo">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="anger cell">
+              <div class="anger cell" title="Desprecio">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
@@ -140,19 +145,19 @@
               </select>
             </div>
             <div class="sentibar">
-              <div class="persuade cell">
+              <div class="persuade cell" title="Optimismo">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="motivate cell">
+              <div class="motivate cell" title="Confianza">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="cajole cell">
+              <div class="cajole cell" title="Miedo">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
-              <div class="anger cell">
+              <div class="anger cell" title="Desprecio">
                 <div class="fill"></div>
                 <div class="value">1</div>
               </div>
@@ -162,59 +167,59 @@
     </div>
 
     <!-- MODULE PREVIEW -->
-    <div class="mod-preview mod-margin-top">
-      <h2 class="module-name">Intención de noticia</h1>
-      <p class="module-desc">(después de grabar tome la siguiente noticia)</p>
-      <div id="mod-preview-sentibar" class="sentibar">
-        <div class="persuade cell">
-          <span>Persuadir</span>
-          <div class="fill"></div>
-          <div class="value">2</div>
-        </div>
-        <div class="motivate cell">
-          <span>Motivar</span>
-          <div class="fill"></div>
-          <div class="value">2</div>
-        </div>
-        <div class="cajole cell">
-          <span>Engañar</span>
-          <div class="fill"></div>
-          <div class="value">2</div>
-        </div>
-        <div class="anger cell">
-          <span>Enojar</span>
-          <div class="fill"></div>
-          <div class="value">2</div>
-        </div>
-      </div>
-      <button id="rec">GRABAR</button>
-      <div id="con-debug-sum">
-        <h4 id="sum-title" class="white">- - - - - - sum - - - - - -</h4>
-        <div id="mod-sum-sentibar" class="sentibar">
+    <div class="mod mod-preview mod-margin-top">
+      <h2 class="module-name">Impacto de noticia</h1>
+        <p class="module-desc">(las barras muestran el impacto por emoción)</p>
+        <div id="mod-preview-sentibar" class="sentibar">
           <div class="persuade cell">
+            <span>Optimismo</span>
             <div class="fill"></div>
             <div class="value">2</div>
           </div>
           <div class="motivate cell">
+            <span>Confianza</span>
             <div class="fill"></div>
             <div class="value">2</div>
           </div>
           <div class="cajole cell">
+            <span>Miedo</span>
             <div class="fill"></div>
             <div class="value">2</div>
           </div>
           <div class="anger cell">
+            <span>Desprecio</span>
             <div class="fill"></div>
             <div class="value">2</div>
           </div>
         </div>
-      </div>
+        <button id="rec">GRABAR</button>
+        <div id="con-debug-sum">
+          <h4 id="sum-title" class="white">- - - - - - sum - - - - - -</h4>
+          <div id="mod-sum-sentibar" class="sentibar">
+            <div class="persuade cell">
+              <div class="fill"></div>
+              <div class="value">2</div>
+            </div>
+            <div class="motivate cell">
+              <div class="fill"></div>
+              <div class="value">2</div>
+            </div>
+            <div class="cajole cell">
+              <div class="fill"></div>
+              <div class="value">2</div>
+            </div>
+            <div class="anger cell">
+              <div class="fill"></div>
+              <div class="value">2</div>
+            </div>
+          </div>
+        </div>
     </div>
 
     <!-- MODULE RESULTS -->
-    <div class="mod-rslt mod-margin-top">
+    <div class="mod mod-rslt mod-margin-top">
       <h2 class="module-name">Encuestas</h2>
-      <p class="module-desc">(cada noticia emitida las afecta)</p>
+      <p class="module-desc">(muestra las intenciones de voto de la audiencia)</p>
       <div class="con-groups">
         <div class="group" id="groupA">
           <h2></h2>
@@ -233,7 +238,43 @@
         </div>
       </div>
       <button id="end-day">Terminar día</button>
-      <p id="end-day-desc" class="module-desc">Úselo para recibir nuevas noticias</p>
+    </div>
+
+    <!-- MODULE HELP -->
+    <div class="mod mod-help">
+      <p class="yellow">
+        Señor editor, esta máquina le permite ver el impacto que tendrá en la audiencia una noticia. Úsela para que
+        esta se presente de acuerdo a las necesidades del canal.
+      </p>
+      <b>Indicaciones:</b>
+      <div class="instructions">
+        <p>
+          1. Haga clic en el botón "Tomar noticia". Cumpla el objetivo indicado haciendo uso del material disponible.
+        </p>
+        <p>
+          2. Con las listas desplegables seleccione el Material a usar. Tenga en cuenta que:
+        </p>
+        <p>
+          &nbsp;&nbsp;&nbsp;a. El orden en el que este se presenta afecta el impacto de la noticia.
+        </p>
+        <p>
+          &nbsp;&nbsp;&nbsp;b. No usar todo el espacio disponible reduce la efectividad del material.
+        </p>
+        <p>
+          3. Una vez haya terminado de seleccionar y acomodar el material, use el botón "GRABAR" para que la noticia
+          sea emitida. Esto causará cambios en la intención de voto de la audiencia.
+        </p>
+        <p>
+          4. Si aún quedan noticias por presentar, vuelva al punto 1.
+        </p>
+        <p>
+          5. Cuando no queden más noticias, podrá hacer clic en "Terminar día" para recibir una notificación de su
+          desempeño.
+        </p>
+        <p>
+          6. Después de leer la notificación, ciérrela. Recibirá nuevas noticias al hacerlo.
+        </p>
+      </div>
     </div>
   </div>
   <div id="debug">

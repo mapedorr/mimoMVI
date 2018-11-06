@@ -8,7 +8,7 @@
 
 .mod-rslt .con-groups .group {
   position: relative;
-  border: 2px solid #66d9ef;
+  border: 2px solid #999999;
   color: #f8f8f2;
   margin-top: 10px;
   padding: 0px 10px;
@@ -20,23 +20,23 @@
   top: 0;
   width: 50%;
   height: 100%;
-  background-color: #66d9ef;
+  background-color: #999999;
 }
 
 .mod-rslt .con-groups #groupA {
-  border: 2px solid #ae81ff;
+  border: 2px solid #fd971f;
 }
 
 .mod-rslt .con-groups #groupA .fill {
-  background-color: #ae81ff;
+  background-color: #fd971f;
 }
 
 .mod-rslt .con-groups #groupB {
-  border: 2px solid #a6e22e;
+  border: 2px solid #66d9ef;
 }
 
 .mod-rslt .con-groups #groupB .fill {
-  background-color: #a6e22e;
+  background-color: #66d9ef;
 }
 
 .mod-rslt .con-groups h2,
@@ -47,19 +47,7 @@
 }
 
 .mod-rslt button {
-  background: #ae81ff;
-  color: #efe158;
   width: 100%;
   margin-top: 30px;
   font-size: 16px;
-}
-
-.mod-rslt button:active {
-  background-color: #efe158;
-  color: #ae81ff;
-}
-
-.mod-rslt button:disabled {
-  background-color: #999999;
-  color: #f8f8f2;
 }

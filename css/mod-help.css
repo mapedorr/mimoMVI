@@ -1,0 +1,18 @@
+.mod-help {
+  background-color: #313131;
+  border-color: #313131;
+}
+
+.mod-help h1,
+.mod-help h2,
+.mod-help h3,
+.mod-help h4,
+.mod-help h5,
+.mod-help h6,
+.mod-help p {
+  margin: 5px 0px;
+}
+
+.mod-help .instructions p {
+  margin: 0;
+}
