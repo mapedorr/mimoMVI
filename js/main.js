@@ -30,20 +30,20 @@ const GOAL_TYPE = {
 const POPULATION = 20000;
 const MTL_AMP_LEVELS = 3;
 const MTL_AMP_PCT = 100 / MTL_AMP_LEVELS;
-const NEWS_IMPACT = [200, 1500];
+const NEWS_IMPACT = [200, 1000];
 
 /**
  * V A R I A B L E S ──────────────────────────────────────────────────────────
  */
 let currentDay = 0;
+let currentFact = null;
+let currentFactIndex = 0;
 let votingIntentions = {
   a: POPULATION * 0.4,
   b: POPULATION * 0.4,
   u: POPULATION * 0.2
 };
 let dayFacts = null;
-let currentFact = null;
-let currentFactIndex = 0;
 let debugShowNumbers = false;
 let debugShowSum = false;
 let affectedPeople = [];
